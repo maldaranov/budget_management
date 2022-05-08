@@ -3,7 +3,7 @@
 
 class User {
 private:
-    std::string fullname;
+    std::string name;
 public: 
     std::string get_name();
 };
