@@ -1,5 +1,6 @@
 #include "records.h"
 using namespace std;
+#define TEST1
 
 int main () {
     // Greetings message.
@@ -10,5 +11,11 @@ int main () {
     cout << "Please enter your full name: ";
     getline(cin, user_name);
     
+    // Initialize the 'User' object.
+    User user(user_name);
+    #ifdef TEST1
+    cout << "This is the generated file name: " << user.get_record_name() << endl;
+    #endif
+
     return 0;
 }
