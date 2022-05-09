@@ -21,8 +21,9 @@ int main () {
     char c;
     while (1) {
         cout << "\nPlease enter the desired operation to perform." << endl;
-        cout << " '+' to records earnings." << endl;
-        cout << " '-' to records spendings." << endl;
+        cout << " '+' to record earnings." << endl;
+        cout << " '-' to record spendings." << endl;
+        cout << " '=' to see balance." << endl;
         cout << " 'x' to exit the program." << endl;
         cin >> c;
         cout << endl;
@@ -31,6 +32,8 @@ int main () {
             cout << "Earnings." << endl;
         } else if (c == '-') {
             cout << "Spendings." << endl;
+        } else if (c == '=') {
+            cout << "Total balance." << endl;
         } else if (c == 'x') {
             cout << "Exited." << endl;
             exit(0);
