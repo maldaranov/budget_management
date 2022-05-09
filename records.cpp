@@ -3,16 +3,15 @@
 User::User(std::string name_in) {
     name = name_in;
     generate_record_name();
-}
-std::string User::get_name() {
-    return name;
-}
-std::string User::get_record_name() {
-    return record_name;
+    fp.open(record_name, std::ios::out | std::ios::out);
+    if (!fp.is_open()) {
+        std::cout << "ERROR: failed to open/create a file." << std::endl;
+    } else {
+        fp << "Transaction history of " << name << std::endl;
+    }
 }
 void User::generate_record_name() {
-    std::string result;
-
+    std::string result = "records/";
     // Convert all characters in the name to lowercase.
     // Convert all spaces to underscore.
     char c;
@@ -29,4 +28,10 @@ void User::generate_record_name() {
     result.append(".txt");
     record_name = result;
 
+}
+std::string User::get_name() {
+    return name;
+}
+std::string User::get_record_name() {
+    return record_name;
 }

@@ -14,7 +14,7 @@ int main () {
     // Initialize the 'User' object.
     User user(user_name);
     #ifdef generate_file_name // Test if the correct file name was generated.
-    cout << "This is the generated file name: " << user.get_record_name() << endl;
+    cout << "This is the generated file path: " << user.get_record_name() << endl;
     #endif
 
     // User interface.
