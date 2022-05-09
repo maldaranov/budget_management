@@ -1,6 +1,6 @@
 #include "records.h"
 using namespace std;
-#define TEST1
+#define generate_file_name
 
 int main () {
     // Greetings message.
@@ -13,7 +13,7 @@ int main () {
     
     // Initialize the 'User' object.
     User user(user_name);
-    #ifdef TEST1
+    #ifdef generate_file_name
     cout << "This is the generated file name: " << user.get_record_name() << endl;
     #endif
 
