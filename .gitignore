@@ -1,2 +1,3 @@
 main
-transactions.txt
+records/*
+!records/.gitkeep
