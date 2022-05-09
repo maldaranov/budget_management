@@ -3,6 +3,7 @@
 User::User(std::string name_in) {
     name = name_in;
     generate_record_name();
+    balance = 0;
     fp.open(record_name, std::ios::out | std::ios::out);
     if (!fp.is_open()) {
         std::cout << "ERROR: failed to open/create a file." << std::endl;
