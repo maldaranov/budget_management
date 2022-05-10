@@ -6,6 +6,7 @@ class User {
 private:
     std::string name;
     std::string record_name;
+    int num_transactions;
     int balance;
     void generate_record_name();
     std::fstream fp;

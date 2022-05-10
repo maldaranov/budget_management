@@ -4,11 +4,13 @@ User::User(std::string name_in) {
     name = name_in;
     generate_record_name();
     balance = 0;
+    num_transactions = 0;
     fp.open(record_name, std::ios::out | std::ios::out);
     if (!fp.is_open()) {
         std::cout << "ERROR: failed to open/create a file." << std::endl;
     } else {
-        fp << "Transaction history of " << name << std::endl;
+        fp << "Transaction history of " << name << "." << std::endl;
+        fp << "Number of transactions: " << num_transactions << "." << std::endl;
     }
 }
 void User::generate_record_name() {
