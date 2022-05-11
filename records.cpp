@@ -1,8 +1,8 @@
 #include "records.h"
 
-User::User(std::string name_in) {
+User::User(std::string name_in, std::string month_in) {
     name = name_in;
-    generate_record_name();
+    generate_record_name(month_in);
     balance = 0;
     num_transactions = 0;
     fp.open(record_name, std::ios::out | std::ios::out);
@@ -13,10 +13,10 @@ User::User(std::string name_in) {
         fp << "Number of transactions: " << num_transactions << "." << std::endl;
     }
 }
-void User::generate_record_name() {
+void User::generate_record_name(std::string month) {
     std::string result = "records/";
-    // Convert all characters in the name to lowercase.
-    // Convert all spaces to underscore.
+
+    // Convert any uppercase characters in the name to lowercase and all spaces to underscore.
     char c;
     for (int i = 0; i < name.length(); i++) {
         if (isspace(name[i])) {
@@ -28,9 +28,18 @@ void User::generate_record_name() {
         }
         result.push_back(c);
     }
+    result.push_back('_');
+    // Convert any uppercase characters in the month to lowercase.
+    for (int i = 0; i < month.length(); i++) {
+        if (isupper(month[i])) {
+            c = tolower(month[i]);
+        } else {
+            c = month[i];
+        }
+        result.push_back(c);
+    }
     result.append(".txt");
     record_name = result;
-
 }
 std::string User::get_name() {
     return name;
