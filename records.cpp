@@ -6,10 +6,13 @@ User::User(std::string name_in, std::string year_in, std::string month_in) {
     month = month_in;
     generate_record_name();
     balance = 0;
-    fp.open(record_name, std::ios::out);
-    if (!fp.is_open()) {
-        std::cout << "ERROR: failed to open/create a file." << std::endl;
+    fp.open(record_name, std::ios::in);
+    if (fp.is_open()) { // File already exists.
+        fp.close();
+        fp.open(record_name, std::ios::app);
     } else {
+        fp.close();
+        fp.open(record_name, std::ios::out);
         fp << "Transaction history of " << name << " for " << month << " " << year << std::endl;
     }
 }
