@@ -11,13 +11,18 @@ int main () {
     cout << "Please enter your full name: ";
     getline(cin, user_name);
 
+    // Get the year for which user wants to records his/her transacations.
+    string user_year;
+    cout << "Please enter the year for which you want to records the transactions: ";
+    cin >> user_year;
+
     // Get the month for which user wants to record his/her transactions.
     string user_month;
     cout << "Please enter the name of the month for which you want to record the transactions: ";
     cin >> user_month;          
 
     // Initialize the 'User' object.
-    User user(user_name, user_month);
+    User user(user_name, user_year, user_month);
     #ifdef generate_file_name // Test if the correct file name was generated.
     cout << "This is the generated file path: " << user.get_record_name() << endl;
     #endif

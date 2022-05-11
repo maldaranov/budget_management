@@ -1,19 +1,19 @@
 #include "records.h"
 
-User::User(std::string name_in, std::string month_in) {
+User::User(std::string name_in, std::string year_in, std::string month_in) {
     name = name_in;
-    generate_record_name(month_in);
+    year = year_in;
+    month = month_in;
+    generate_record_name();
     balance = 0;
-    num_transactions = 0;
-    fp.open(record_name, std::ios::out | std::ios::out);
+    fp.open(record_name, std::ios::out);
     if (!fp.is_open()) {
         std::cout << "ERROR: failed to open/create a file." << std::endl;
     } else {
-        fp << "Transaction history of " << name << "." << std::endl;
-        fp << "Number of transactions: " << num_transactions << "." << std::endl;
+        fp << "Transaction history of " << name << " for " << month << " " << year << std::endl;
     }
 }
-void User::generate_record_name(std::string month) {
+void User::generate_record_name() {
     std::string result = "records/";
 
     // Convert any uppercase characters in the name to lowercase and all spaces to underscore.
@@ -38,6 +38,8 @@ void User::generate_record_name(std::string month) {
         }
         result.push_back(c);
     }
+    result.push_back('_');
+    result.append(year);
     result.append(".txt");
     record_name = result;
 }
