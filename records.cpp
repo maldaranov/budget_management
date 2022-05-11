@@ -46,6 +46,12 @@ void User::generate_record_name() {
 std::string User::get_name() {
     return name;
 }
+std::string User::get_year() {
+    return year;
+}
+std::string User::get_month() {
+    return month;
+}
 std::string User::get_record_name() {
     return record_name;
 }

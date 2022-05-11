@@ -14,5 +14,7 @@ private:
 public: 
     User(std::string, std::string, std::string);
     std::string get_name();
+    std::string get_year();
+    std::string get_month();
     std::string get_record_name();
 };
