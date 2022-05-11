@@ -30,7 +30,7 @@ int main () {
     // User interface.
     char c;
     while (1) {
-        cout << "\nPlease enter the desired operation to perform." << endl;
+        cout << "\nPlease enter the desired operation to perform.\n" << endl;
         cout << " '+' to record earnings." << endl;
         cout << " '-' to record spendings." << endl;
         cout << " '=' to see balance." << endl;
@@ -39,6 +39,7 @@ int main () {
         cout << endl;
 
         string sum;
+        int total = user.get_balance();
         if (c == '+') {
             cout << "Please enter the amount to add to your account: " << endl;
             cin >> sum;
@@ -46,7 +47,7 @@ int main () {
             cout << "Please enter the amount to subtract from your account: " << endl;
             cin >> sum;
         } else if (c == '=') {
-            cout << "Your total balance is " << endl;
+            cout << "Your total balance is " << total << endl;
         } else if (c == 'x') {
             cout << "Exited." << endl;
             exit(0);

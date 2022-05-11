@@ -55,3 +55,6 @@ std::string User::get_month() {
 std::string User::get_record_name() {
     return record_name;
 }
+int User::get_balance() {
+    return balance;
+}
