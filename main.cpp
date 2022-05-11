@@ -38,12 +38,15 @@ int main () {
         cin >> c;
         cout << endl;
 
+        string sum;
         if (c == '+') {
-            cout << "Earnings." << endl;
+            cout << "Please enter the amount to add to your account: " << endl;
+            cin >> sum;
         } else if (c == '-') {
-            cout << "Spendings." << endl;
+            cout << "Please enter the amount to subtract from your account: " << endl;
+            cin >> sum;
         } else if (c == '=') {
-            cout << "Total balance." << endl;
+            cout << "Your total balance is " << endl;
         } else if (c == 'x') {
             cout << "Exited." << endl;
             exit(0);
