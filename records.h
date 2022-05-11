@@ -17,5 +17,7 @@ public:
     std::string get_year();
     std::string get_month();
     std::string get_record_name();
+    void add_gain(std::string);
+    void add_loss(std::string);
     int get_balance();
 };

@@ -55,6 +55,14 @@ std::string User::get_month() {
 std::string User::get_record_name() {
     return record_name;
 }
+void User::add_gain(std::string gain_in) {
+    balance += stoi(gain_in);
+    fp << "+ $" << gain_in << " = $" << balance << std::endl;
+}
+void User::add_loss(std::string loss_in) {
+    balance -= stoi(loss_in);
+    fp << "- $" << loss_in << " = $" << balance << std::endl;
+}
 int User::get_balance() {
     return balance;
 }
