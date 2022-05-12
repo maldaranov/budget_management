@@ -50,17 +50,28 @@ void User::generate_record_name() {
 void User::update_balance() {
     char c;
     std::string result;
+
+    // Open the file for writing at the end.
     fp.open(record_name, std::ios::in | std::ios::ate);
+
+    // Get the length of the file.
     std::streampos size = fp.tellg();
-    for (int i = 1; i <= size; i++) {
-        fp.seekg(-i, std::ios::end);
-        fp.get(c);
-        if (c == '$') break;
-        result = c + result;
+
+    // Set the stream pointer to the end before the newline.
+    fp.seekg(-1 ,std::ios::end);
+
+    fp.get(c);
+    if (c == '.') {
+        for (int i = 1; i <= size; i++) {
+            fp.seekg(-i, std::ios::end);
+            fp.get(c);
+            if (c == '$') break;
+            result = c + result;
+        }
+        std::cout << result << std::endl;
+        balance = stoi(result);
     }
-    std::cout << result << std::endl;
     fp.close();
-    balance = stoi(result);
 }
 std::string User::get_name() {
     return name;
