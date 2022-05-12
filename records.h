@@ -10,6 +10,7 @@ private:
     std::string record_name;
     int balance;
     void generate_record_name();
+    void update_balance();
     std::fstream fp;
 public: 
     User(std::string, std::string, std::string);

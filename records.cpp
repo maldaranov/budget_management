@@ -9,8 +9,9 @@ User::User(std::string name_in, std::string year_in, std::string month_in) {
     fp.open(record_name, std::ios::in);
     if (fp.is_open()) { // File already exists.
         fp.close();
+        update_balance();
         fp.open(record_name, std::ios::app);
-    } else {
+    } else { // File doesn't exist, create the file and add the appropriate header.
         fp.close();
         fp.open(record_name, std::ios::out);
         fp << "Transaction history of " << name << " for " << month << " " << year << std::endl;
@@ -45,6 +46,24 @@ void User::generate_record_name() {
     result.append(year);
     result.append(".txt");
     record_name = result;
+}
+void User::update_balance() {
+    char c;
+    std::string result;
+    fp.open(record_name, std::ios::in | std::ios::ate);
+    if (fp.fail()) {
+        std::cout << "ERROR: failed to open the file." << std::endl;
+    }
+    std::streampos size = fp.tellg();
+    for (int i = 1; i <= size; i++) {
+        fp.seekg(-i, std::ios::end);
+        fp.get(c);
+        if (c == '$') break;
+        result = c + result;
+    }
+    std::cout << result << std::endl;
+    fp.close();
+    balance = stoi(result);
 }
 std::string User::get_name() {
     return name;
