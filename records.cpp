@@ -51,9 +51,6 @@ void User::update_balance() {
     char c;
     std::string result;
     fp.open(record_name, std::ios::in | std::ios::ate);
-    if (fp.fail()) {
-        std::cout << "ERROR: failed to open the file." << std::endl;
-    }
     std::streampos size = fp.tellg();
     for (int i = 1; i <= size; i++) {
         fp.seekg(-i, std::ios::end);
@@ -79,11 +76,11 @@ std::string User::get_record_name() {
 }
 void User::add_gain(std::string gain_in) {
     balance += stoi(gain_in);
-    fp << "+ $" << gain_in << " = $" << balance << std::endl;
+    fp << "+ $" << gain_in << " = $" << balance << "." << std::endl;
 }
 void User::add_loss(std::string loss_in) {
     balance -= stoi(loss_in);
-    fp << "- $" << loss_in << " = $" << balance << std::endl;
+    fp << "- $" << loss_in << " = $" << balance << "." << std::endl;
 }
 int User::get_balance() {
     return balance;
