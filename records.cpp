@@ -58,11 +58,12 @@ void User::update_balance() {
     std::streampos size = fp.tellg();
 
     // Set the stream pointer to the end before the newline.
-    fp.seekg(-1 ,std::ios::end);
+    fp.seekg(-2 ,std::ios::end);
 
     fp.get(c);
+    std::cout << "TEST: " << c << std::endl;
     if (c == '.') {
-        for (int i = 1; i <= size; i++) {
+        for (int i = 3; i <= size; i++) {
             fp.seekg(-i, std::ios::end);
             fp.get(c);
             if (c == '$') break;
