@@ -56,6 +56,5 @@ int main () {
             cout << "ERROR: invalid input." << endl;
         }
     }
-
     return 0;
 }
