@@ -61,7 +61,6 @@ void User::update_balance() {
     fp.seekg(-2 ,std::ios::end);
 
     fp.get(c);
-    std::cout << "TEST: " << c << std::endl;
     if (c == '.') {
         for (int i = 3; i <= size; i++) {
             fp.seekg(-i, std::ios::end);
@@ -69,7 +68,6 @@ void User::update_balance() {
             if (c == '$') break;
             result = c + result;
         }
-        std::cout << result << std::endl;
         balance = stoi(result);
     }
     fp.close();
